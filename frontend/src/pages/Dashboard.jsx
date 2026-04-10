@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getStudentStats } from '../services/api';
-import { HiOutlineUsers, HiOutlineUserAdd, HiOutlineCheckCircle, HiOutlineXCircle, HiOutlineAcademicCap } from 'react-icons/hi';
+import { HiOutlineUsers, HiOutlineUserAdd, HiOutlineCheckCircle, HiOutlineUserRemove, HiOutlineAcademicCap } from 'react-icons/hi';
 import toast from 'react-hot-toast';
 
 export default function Dashboard() {
@@ -40,7 +40,7 @@ export default function Dashboard() {
     {
       title: 'Withdrawn Students',
       value: stats.withdrawn,
-      icon: HiOutlineXCircle,
+      icon: HiOutlineUserRemove,
       text: 'text-red-700 dark:text-red-400',
       iconBg: 'bg-red-100 dark:bg-red-900/30',
     },
