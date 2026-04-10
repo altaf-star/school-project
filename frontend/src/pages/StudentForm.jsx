@@ -91,155 +91,80 @@ export default function StudentForm() {
     );
   }
 
+  const inputClass = "w-full px-4 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition text-gray-900 dark:text-white bg-white dark:bg-gray-700";
+
   return (
     <div>
       <button
         onClick={() => navigate(-1)}
-        className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 mb-6 transition"
+        className="inline-flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white mb-6 transition"
       >
         <HiOutlineArrowLeft className="w-5 h-5" />
         Back
       </button>
 
       <div className="max-w-3xl">
-        <h1 className="text-2xl font-bold text-gray-900 mb-1">
+        <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-1">
           {isEdit ? 'Edit Student' : 'Add New Student'}
         </h1>
-        <p className="text-gray-500 mb-8">
+        <p className="text-gray-500 dark:text-gray-400 mb-8">
           {isEdit ? 'Update student information' : 'Fill in the details to register a new student'}
         </p>
 
-        <form onSubmit={handleSubmit} className="bg-white rounded-xl border border-gray-200 shadow-sm p-6 sm:p-8">
+        <form onSubmit={handleSubmit} className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm p-6 sm:p-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-            {/* Admission Number */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
                 Admission Number <span className="text-red-500">*</span>
               </label>
-              <input
-                type="text"
-                name="admissionNumber"
-                value={form.admissionNumber}
-                onChange={handleChange}
-                className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition text-gray-900"
-                placeholder="e.g. 2024001"
-              />
+              <input type="text" name="admissionNumber" value={form.admissionNumber} onChange={handleChange} className={inputClass} placeholder="e.g. 2024001" />
             </div>
-
-            {/* Name */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
                 Full Name <span className="text-red-500">*</span>
               </label>
-              <input
-                type="text"
-                name="name"
-                value={form.name}
-                onChange={handleChange}
-                className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition text-gray-900"
-                placeholder="Student full name"
-              />
+              <input type="text" name="name" value={form.name} onChange={handleChange} className={inputClass} placeholder="Student full name" />
             </div>
-
-            {/* Date of Birth */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
                 Date of Birth <span className="text-red-500">*</span>
               </label>
-              <input
-                type="date"
-                name="dateOfBirth"
-                value={form.dateOfBirth}
-                onChange={handleChange}
-                className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition text-gray-900"
-              />
+              <input type="date" name="dateOfBirth" value={form.dateOfBirth} onChange={handleChange} className={inputClass} />
             </div>
-
-            {/* Class */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
                 Enrolled Class <span className="text-red-500">*</span>
               </label>
-              <select
-                name="enrolledClass"
-                value={form.enrolledClass}
-                onChange={handleChange}
-                className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none bg-white text-gray-900"
-              >
+              <select name="enrolledClass" value={form.enrolledClass} onChange={handleChange} className={inputClass}>
                 <option value="">Select Class</option>
                 {CLASS_OPTIONS.map((c) => (
                   <option key={c} value={c}>Class {c}</option>
                 ))}
               </select>
             </div>
-
-            {/* Father Name */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">Father's Name</label>
-              <input
-                type="text"
-                name="fatherName"
-                value={form.fatherName}
-                onChange={handleChange}
-                className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition text-gray-900"
-                placeholder="Father's name"
-              />
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">Father's Name</label>
+              <input type="text" name="fatherName" value={form.fatherName} onChange={handleChange} className={inputClass} placeholder="Father's name" />
             </div>
-
-            {/* Mother Name */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">Mother's Name</label>
-              <input
-                type="text"
-                name="motherName"
-                value={form.motherName}
-                onChange={handleChange}
-                className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition text-gray-900"
-                placeholder="Mother's name"
-              />
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">Mother's Name</label>
+              <input type="text" name="motherName" value={form.motherName} onChange={handleChange} className={inputClass} placeholder="Mother's name" />
             </div>
-
-            {/* Phone */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">Phone Number</label>
-              <input
-                type="tel"
-                name="phoneNumber"
-                value={form.phoneNumber}
-                onChange={handleChange}
-                className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition text-gray-900"
-                placeholder="e.g. 9876543210"
-              />
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">Phone Number</label>
+              <input type="tel" name="phoneNumber" value={form.phoneNumber} onChange={handleChange} className={inputClass} placeholder="e.g. 9876543210" />
             </div>
-
-            {/* Admission Date */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">Admission Date</label>
-              <input
-                type="date"
-                name="admissionDate"
-                value={form.admissionDate}
-                onChange={handleChange}
-                className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition text-gray-900"
-              />
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">Admission Date</label>
+              <input type="date" name="admissionDate" value={form.admissionDate} onChange={handleChange} className={inputClass} />
             </div>
-
-            {/* Address - Full width */}
             <div className="sm:col-span-2">
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">Address</label>
-              <textarea
-                name="address"
-                value={form.address}
-                onChange={handleChange}
-                rows={3}
-                className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition text-gray-900 resize-none"
-                placeholder="Full address"
-              />
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">Address</label>
+              <textarea name="address" value={form.address} onChange={handleChange} rows={3} className={`${inputClass} resize-none`} placeholder="Full address" />
             </div>
           </div>
 
-          {/* Actions */}
-          <div className="flex items-center gap-3 mt-8 pt-6 border-t border-gray-200">
+          <div className="flex items-center gap-3 mt-8 pt-6 border-t border-gray-200 dark:border-gray-700">
             <button
               type="submit"
               disabled={loading}
@@ -250,7 +175,7 @@ export default function StudentForm() {
             <button
               type="button"
               onClick={() => navigate('/students')}
-              className="px-6 py-2.5 border border-gray-300 text-gray-700 font-medium rounded-lg hover:bg-gray-50 transition"
+              className="px-6 py-2.5 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 font-medium rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition"
             >
               Cancel
             </button>

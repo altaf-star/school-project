@@ -20,37 +20,29 @@ export default function Dashboard() {
       title: 'Total Students',
       value: stats.total,
       icon: HiOutlineUsers,
-      color: 'blue',
-      bg: 'bg-blue-50',
-      text: 'text-blue-700',
-      iconBg: 'bg-blue-100',
+      text: 'text-blue-700 dark:text-blue-400',
+      iconBg: 'bg-blue-100 dark:bg-blue-900/30',
     },
     {
       title: 'Active Students',
       value: stats.active,
       icon: HiOutlineCheckCircle,
-      color: 'green',
-      bg: 'bg-green-50',
-      text: 'text-green-700',
-      iconBg: 'bg-green-100',
+      text: 'text-green-700 dark:text-green-400',
+      iconBg: 'bg-green-100 dark:bg-green-900/30',
     },
     {
       title: 'Graduated Students',
       value: stats.graduated,
       icon: HiOutlineAcademicCap,
-      color: 'purple',
-      bg: 'bg-purple-50',
-      text: 'text-purple-700',
-      iconBg: 'bg-purple-100',
+      text: 'text-purple-700 dark:text-purple-400',
+      iconBg: 'bg-purple-100 dark:bg-purple-900/30',
     },
     {
       title: 'Withdrawn Students',
       value: stats.withdrawn,
       icon: HiOutlineXCircle,
-      color: 'red',
-      bg: 'bg-red-50',
-      text: 'text-red-700',
-      iconBg: 'bg-red-100',
+      text: 'text-red-700 dark:text-red-400',
+      iconBg: 'bg-red-100 dark:bg-red-900/30',
     },
   ];
 
@@ -58,8 +50,8 @@ export default function Dashboard() {
     <div>
       <div className="flex items-center justify-between mb-8">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Dashboard</h1>
-          <p className="text-gray-500 mt-1">Overview of school statistics</p>
+          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Dashboard</h1>
+          <p className="text-gray-500 dark:text-gray-400 mt-1">Overview of school statistics</p>
         </div>
         <Link
           to="/students/add"
@@ -81,11 +73,11 @@ export default function Dashboard() {
             return (
               <div
                 key={card.title}
-                className="bg-white rounded-xl border border-gray-200 p-6 shadow-sm hover:shadow-md transition"
+                className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-6 shadow-sm hover:shadow-md transition"
               >
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm font-medium text-gray-500">{card.title}</p>
+                    <p className="text-sm font-medium text-gray-500 dark:text-gray-400">{card.title}</p>
                     <p className={`text-3xl font-bold mt-2 ${card.text}`}>{card.value}</p>
                   </div>
                   <div className={`w-12 h-12 ${card.iconBg} rounded-xl flex items-center justify-center`}>
@@ -100,30 +92,30 @@ export default function Dashboard() {
 
       {/* Quick Actions */}
       <div className="mt-10">
-        <h2 className="text-lg font-semibold text-gray-900 mb-4">Quick Actions</h2>
+        <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Quick Actions</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           <Link
             to="/students"
-            className="flex items-center gap-3 p-4 bg-white border border-gray-200 rounded-xl hover:border-blue-300 hover:shadow-sm transition"
+            className="flex items-center gap-3 p-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl hover:border-blue-300 dark:hover:border-blue-600 hover:shadow-sm transition"
           >
-            <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-              <HiOutlineUsers className="w-5 h-5 text-blue-700" />
+            <div className="w-10 h-10 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center">
+              <HiOutlineUsers className="w-5 h-5 text-blue-700 dark:text-blue-400" />
             </div>
             <div>
-              <p className="font-medium text-gray-900">View All Students</p>
-              <p className="text-sm text-gray-500">Browse and manage records</p>
+              <p className="font-medium text-gray-900 dark:text-white">View All Students</p>
+              <p className="text-sm text-gray-500 dark:text-gray-400">Browse and manage records</p>
             </div>
           </Link>
           <Link
             to="/students/add"
-            className="flex items-center gap-3 p-4 bg-white border border-gray-200 rounded-xl hover:border-blue-300 hover:shadow-sm transition"
+            className="flex items-center gap-3 p-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl hover:border-blue-300 dark:hover:border-blue-600 hover:shadow-sm transition"
           >
-            <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
-              <HiOutlineUserAdd className="w-5 h-5 text-green-700" />
+            <div className="w-10 h-10 bg-green-100 dark:bg-green-900/30 rounded-lg flex items-center justify-center">
+              <HiOutlineUserAdd className="w-5 h-5 text-green-700 dark:text-green-400" />
             </div>
             <div>
-              <p className="font-medium text-gray-900">Add New Student</p>
-              <p className="text-sm text-gray-500">Register a new admission</p>
+              <p className="font-medium text-gray-900 dark:text-white">Add New Student</p>
+              <p className="text-sm text-gray-500 dark:text-gray-400">Register a new admission</p>
             </div>
           </Link>
         </div>
