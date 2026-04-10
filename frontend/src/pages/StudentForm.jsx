@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { createStudent, getStudent, updateStudent } from '../services/api';
 import toast from 'react-hot-toast';
 import { HiOutlineArrowLeft } from 'react-icons/hi';
+import DateInput from '../components/DateInput';
 
 const CLASS_OPTIONS = [
   'Nursery', 'LKG', 'UKG',
@@ -129,7 +130,7 @@ export default function StudentForm() {
               <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
                 Date of Birth <span className="text-red-500">*</span>
               </label>
-              <input type="date" name="dateOfBirth" value={form.dateOfBirth} onChange={handleChange} className={inputClass} />
+              <DateInput name="dateOfBirth" value={form.dateOfBirth} onChange={handleChange} className={inputClass} />
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
@@ -156,7 +157,7 @@ export default function StudentForm() {
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">Admission Date</label>
-              <input type="date" name="admissionDate" value={form.admissionDate} onChange={handleChange} className={inputClass} />
+              <DateInput name="admissionDate" value={form.admissionDate} onChange={handleChange} className={inputClass} />
             </div>
             <div className="sm:col-span-2">
               <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">Address</label>

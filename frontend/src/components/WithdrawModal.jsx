@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { withdrawStudent } from '../services/api';
 import toast from 'react-hot-toast';
 import { HiOutlineX } from 'react-icons/hi';
+import DateInput from './DateInput';
 
 export default function WithdrawModal({ student, onClose, onSuccess }) {
   const [form, setForm] = useState({
@@ -53,8 +54,8 @@ export default function WithdrawModal({ student, onClose, onSuccess }) {
 
           <div>
             <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">Withdrawal Date</label>
-            <input
-              type="date"
+            <DateInput
+              name="withdrawalDate"
               value={form.withdrawalDate}
               onChange={(e) => setForm({ ...form, withdrawalDate: e.target.value })}
               className="w-full px-4 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition text-gray-900 dark:text-white bg-white dark:bg-gray-700"
