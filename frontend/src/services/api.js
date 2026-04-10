@@ -38,6 +38,7 @@ export const createStudent = (data) => api.post('/students', data);
 export const updateStudent = (id, data) => api.put(`/students/${id}`, data);
 export const deleteStudent = (id) => api.delete(`/students/${id}`);
 export const withdrawStudent = (id, data) => api.put(`/students/${id}/withdraw`, data);
+export const graduateStudent = (id) => api.put(`/students/${id}/graduate`);
 export const getStudentStats = () => api.get('/students/stats');
 export const exportStudentsCSV = (params) =>
   api.get('/students/export', { params, responseType: 'blob' });

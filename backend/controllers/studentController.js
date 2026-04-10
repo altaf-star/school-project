@@ -112,8 +112,8 @@ exports.withdrawStudent = async (req, res, next) => {
       return res.status(404).json({ message: 'Student not found' });
     }
 
-    if (student.status === 'withdrawn') {
-      return res.status(400).json({ message: 'Student is already withdrawn' });
+    if (student.status !== 'active') {
+      return res.status(400).json({ message: `Student is already ${student.status}` });
     }
 
     student.status = 'withdrawn';
@@ -130,13 +130,34 @@ exports.withdrawStudent = async (req, res, next) => {
   }
 };
 
+exports.graduateStudent = async (req, res, next) => {
+  try {
+    const student = await Student.findById(req.params.id);
+    if (!student) {
+      return res.status(404).json({ message: 'Student not found' });
+    }
+
+    if (student.status !== 'active') {
+      return res.status(400).json({ message: `Student is already ${student.status}` });
+    }
+
+    student.status = 'graduated';
+    await student.save();
+    res.json(student);
+  } catch (error) {
+    next(error);
+  }
+};
+
 exports.getStats = async (req, res, next) => {
   try {
     const total = await Student.countDocuments();
     const active = await Student.countDocuments({ status: 'active' });
     const withdrawn = await Student.countDocuments({ status: 'withdrawn' });
 
-    res.json({ total, active, withdrawn });
+    const graduated = await Student.countDocuments({ status: 'graduated' });
+
+    res.json({ total, active, withdrawn, graduated });
   } catch (error) {
     next(error);
   }

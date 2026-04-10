@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getStudentStats } from '../services/api';
-import { HiOutlineUsers, HiOutlineUserAdd, HiOutlineCheckCircle, HiOutlineXCircle } from 'react-icons/hi';
+import { HiOutlineUsers, HiOutlineUserAdd, HiOutlineCheckCircle, HiOutlineXCircle, HiOutlineAcademicCap } from 'react-icons/hi';
 import toast from 'react-hot-toast';
 
 export default function Dashboard() {
-  const [stats, setStats] = useState({ total: 0, active: 0, withdrawn: 0 });
+  const [stats, setStats] = useState({ total: 0, active: 0, withdrawn: 0, graduated: 0 });
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -33,6 +33,15 @@ export default function Dashboard() {
       bg: 'bg-green-50',
       text: 'text-green-700',
       iconBg: 'bg-green-100',
+    },
+    {
+      title: 'Graduated Students',
+      value: stats.graduated,
+      icon: HiOutlineAcademicCap,
+      color: 'purple',
+      bg: 'bg-purple-50',
+      text: 'text-purple-700',
+      iconBg: 'bg-purple-100',
     },
     {
       title: 'Withdrawn Students',
@@ -66,7 +75,7 @@ export default function Dashboard() {
           <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-blue-600"></div>
         </div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {cards.map((card) => {
             const Icon = card.icon;
             return (

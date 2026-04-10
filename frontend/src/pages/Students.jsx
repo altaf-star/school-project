@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { getStudents, deleteStudent, exportStudentsCSV } from '../services/api';
+import { getStudents, deleteStudent, graduateStudent, exportStudentsCSV } from '../services/api';
 import WithdrawModal from '../components/WithdrawModal';
 import ConfirmDialog from '../components/ConfirmDialog';
 import toast from 'react-hot-toast';
@@ -9,6 +9,7 @@ import {
   HiOutlinePencil,
   HiOutlineTrash,
   HiOutlineUserRemove,
+  HiOutlineAcademicCap,
   HiOutlineDownload,
   HiOutlineChevronLeft,
   HiOutlineChevronRight,
@@ -28,6 +29,7 @@ export default function Students() {
   const [statusFilter, setStatusFilter] = useState('');
   const [loading, setLoading] = useState(true);
   const [withdrawStudent, setWithdrawStudent] = useState(null);
+  const [graduateTarget, setGraduateTarget] = useState(null);
   const [deleteTarget, setDeleteTarget] = useState(null);
   const navigate = useNavigate();
 
@@ -141,6 +143,7 @@ export default function Students() {
             <option value="">All Status</option>
             <option value="active">Active</option>
             <option value="withdrawn">Withdrawn</option>
+            <option value="graduated">Graduated</option>
           </select>
         </div>
       </div>
@@ -180,6 +183,8 @@ export default function Students() {
                         className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
                           s.status === 'active'
                             ? 'bg-green-100 text-green-800'
+                            : s.status === 'graduated'
+                            ? 'bg-blue-100 text-blue-800'
                             : 'bg-red-100 text-red-800'
                         }`}
                       >
@@ -203,13 +208,22 @@ export default function Students() {
                           <HiOutlinePencil className="w-4 h-4" />
                         </button>
                         {s.status === 'active' && (
-                          <button
-                            onClick={() => setWithdrawStudent(s)}
-                            className="p-2 text-gray-500 hover:text-orange-600 hover:bg-orange-50 rounded-lg transition"
-                            title="Withdraw"
-                          >
-                            <HiOutlineUserRemove className="w-4 h-4" />
-                          </button>
+                          <>
+                            <button
+                              onClick={() => setWithdrawStudent(s)}
+                              className="p-2 text-gray-500 hover:text-orange-600 hover:bg-orange-50 rounded-lg transition"
+                              title="Withdraw"
+                            >
+                              <HiOutlineUserRemove className="w-4 h-4" />
+                            </button>
+                            <button
+                              onClick={() => setGraduateTarget(s)}
+                              className="p-2 text-gray-500 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition"
+                              title="Graduate"
+                            >
+                              <HiOutlineAcademicCap className="w-4 h-4" />
+                            </button>
+                          </>
                         )}
                         <button
                           onClick={() => setDeleteTarget(s)}
@@ -262,6 +276,27 @@ export default function Students() {
             setWithdrawStudent(null);
             fetchStudents(pagination.page);
           }}
+        />
+      )}
+
+      {/* Graduate Confirm */}
+      {graduateTarget && (
+        <ConfirmDialog
+          title="Graduate Student"
+          message={`Are you sure you want to mark ${graduateTarget.name} as graduated?`}
+          confirmLabel="Graduate"
+          variant="info"
+          onConfirm={async () => {
+            try {
+              await graduateStudent(graduateTarget._id);
+              toast.success(`${graduateTarget.name} marked as graduated`);
+              setGraduateTarget(null);
+              fetchStudents(pagination.page);
+            } catch {
+              toast.error('Failed to graduate student');
+            }
+          }}
+          onCancel={() => setGraduateTarget(null)}
         />
       )}
 

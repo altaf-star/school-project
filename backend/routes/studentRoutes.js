@@ -7,6 +7,7 @@ const {
   updateStudent,
   deleteStudent,
   withdrawStudent,
+  graduateStudent,
   getStats,
   exportStudents,
 } = require('../controllers/studentController');
@@ -36,5 +37,6 @@ router.route('/:id')
   .delete(deleteStudent);
 
 router.put('/:id/withdraw', withdrawStudent);
+router.put('/:id/graduate', graduateStudent);
 
 module.exports = router;
