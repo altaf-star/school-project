@@ -39,7 +39,7 @@ exports.getStudents = async (req, res, next) => {
     const skip = (parseInt(page) - 1) * parseInt(limit);
     const total = await Student.countDocuments(query);
     const students = await Student.find(query)
-      .sort({ createdAt: -1 })
+      .sort({ admissionNumber: 1 })
       .skip(skip)
       .limit(parseInt(limit));
 
