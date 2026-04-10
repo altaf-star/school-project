@@ -46,8 +46,8 @@ export default function WithdrawModal({ student, onClose, onSuccess }) {
             <input
               type="text"
               value={form.withdrawalClass}
-              onChange={(e) => setForm({ ...form, withdrawalClass: e.target.value })}
-              className="w-full px-4 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition text-gray-900 dark:text-white bg-white dark:bg-gray-700"
+              readOnly
+              className="w-full px-4 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg outline-none transition text-gray-900 dark:text-white bg-gray-100 dark:bg-gray-600 cursor-not-allowed"
             />
           </div>
 

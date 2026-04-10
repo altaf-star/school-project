@@ -177,13 +177,13 @@ exports.exportStudents = async (req, res, next) => {
     const fields = [
       { label: 'Admission No', value: 'admissionNumber' },
       { label: 'Name', value: 'name' },
-      { label: 'Date of Birth', value: (row) => row.dateOfBirth ? new Date(row.dateOfBirth).toLocaleDateString() : '' },
+      { label: 'Date of Birth', value: (row) => row.dateOfBirth ? new Date(row.dateOfBirth).toLocaleDateString('en-IN') : '' },
       { label: 'Father Name', value: 'fatherName' },
       { label: 'Mother Name', value: 'motherName' },
       { label: 'Address', value: 'address' },
       { label: 'Phone', value: 'phoneNumber' },
       { label: 'Class', value: 'enrolledClass' },
-      { label: 'Admission Date', value: (row) => row.admissionDate ? new Date(row.admissionDate).toLocaleDateString() : '' },
+      { label: 'Admission Date', value: (row) => row.admissionDate ? new Date(row.admissionDate).toLocaleDateString('en-IN') : '' },
       { label: 'Status', value: 'status' },
     ];
 
