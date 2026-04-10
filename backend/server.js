@@ -17,6 +17,8 @@ app.use(cors({
     'http://localhost:3000',
     /\.vercel\.app$/,
     /\.onrender\.com$/,
+    'https://mahischool.org',
+    'https://www.mahischool.org',
   ],
   credentials: true,
 }));
