@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-export default function DateInput({ value, onChange, className, placeholder = 'dd/mm/yyyy' }) {
+export default function DateInput({ name, value, onChange, className, placeholder = 'dd/mm/yyyy' }) {
   const [display, setDisplay] = useState('');
 
   useEffect(() => {
@@ -34,16 +34,15 @@ export default function DateInput({ value, onChange, className, placeholder = 'd
 
       const d = new Date(isoDate);
       if (!isNaN(d.getTime()) && d.toISOString().startsWith(isoDate)) {
-        onChange({ target: { name: e.target.name, value: isoDate } });
+        onChange({ target: { name, value: isoDate } });
       }
-    } else {
-      onChange({ target: { name: e.target.name, value: '' } });
     }
   };
 
   return (
     <input
       type="text"
+      name={name}
       value={display}
       onChange={handleChange}
       className={className}
