@@ -62,8 +62,13 @@ export default function StudentForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!form.admissionNumber || !form.name || !form.dateOfBirth || !form.enrolledClass) {
-      toast.error('Please fill in all required fields');
+    const missing = [];
+    if (!form.admissionNumber) missing.push('Admission Number');
+    if (!form.name) missing.push('Full Name');
+    if (!form.dateOfBirth) missing.push('Date of Birth');
+    if (!form.enrolledClass) missing.push('Enrolled Class');
+    if (missing.length > 0) {
+      toast.error(`Missing: ${missing.join(', ')}`);
       return;
     }
 
